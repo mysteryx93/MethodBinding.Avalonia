@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/Singulink/Singulink.WPF.Data.MethodBinding</PackageProjectUrl>
     <Description>Allows binding events directly to methods, including passing custom parameters.</Description>
     <Version>1.1</Version>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Label="Source Link">

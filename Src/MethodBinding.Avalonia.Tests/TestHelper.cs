@@ -1,38 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Markup;
+using Avalonia;
+using Avalonia.Markup.Xaml;
 
-namespace MethodBinding.Avalonia.Tests
+namespace MethodBinding.Avalonia.Tests;
+
+public static class TestHelper
 {
-    public static class TestHelper
+    public static void RunMethodBinding(object? dataContext, MethodBindingExtension binding)
     {
-        public static void RunMethodBinding(object? dataContext, MethodBindingExtension binding)
-        {
-            var obj = new FrameworkElement {
-                Name = "TestElement",
-                DataContext = dataContext,
-            };
+        var obj = new StyledElement {
+            Name = "TestElement",
+            DataContext = dataContext,
+        };
 
-            var handler = (RoutedEventHandler)binding.ProvideValue(new ServiceProvider(obj, typeof(FrameworkElement).GetEvent("Loaded")!));
-            handler.Invoke(obj, new RoutedEventArgs(FrameworkElement.LoadedEvent, obj));
+        var handler = (EventHandler)binding.ProvideValue(new ServiceProvider(obj, typeof(StyledElement).GetEvent("Initialized")!));
+        handler.Invoke(obj, EventArgs.Empty);
+    }
+
+    private class ServiceProvider : IServiceProvider, IProvideValueTarget
+    {
+        public object TargetObject { get; }
+
+        public object TargetProperty { get; }
+
+        public ServiceProvider(object targetObject, object targetProperty)
+        {
+            TargetObject = targetObject;
+            TargetProperty = targetProperty;
         }
 
-        private class ServiceProvider : IServiceProvider, IProvideValueTarget
-        {
-            public object TargetObject { get; }
-
-            public object TargetProperty { get; }
-
-            public ServiceProvider(object targetObject, object targetProperty)
-            {
-                TargetObject = targetObject;
-                TargetProperty = targetProperty;
-            }
-
-            public object? GetService(Type serviceType) => serviceType.IsInstanceOfType(this) ? this : null;
-        }
+        public object? GetService(Type serviceType) => serviceType.IsInstanceOfType(this) ? this : null;
     }
 }
