@@ -1,8 +1,7 @@
-# Singulink.WPF.Data.MethodBinding
+# MethodBinding.Avalonia
 
-[![Chat on Discord](https://img.shields.io/discord/906246067773923490)](https://discord.gg/EkQhJFsBu6)
 [![View nuget packages](https://img.shields.io/nuget/v/Singulink.WPF.Data.MethodBinding.svg)](https://www.nuget.org/packages/Singulink.WPF.Data.MethodBinding/)
-[![Build and Test](https://github.com/Singulink/Singulink.WPF.Data.MethodBinding/workflows/build%20and%20test/badge.svg)](https://github.com/Singulink/Singulink.WPF.Data.MethodBinding/actions?query=workflow%3A%22build+and+test%22)
+[![Build and Test](https://github.com/mysteryx93/MethodBinding.Avalonia/workflows/build%20and%20test/badge.svg)](https://github.com/mysteryx93/MethodBinding.Avalonia/actions?query=workflow%3A%22build+and+test%22)
 
 **MethodBinding** provides the ability to bind events directly to methods. It supports a full range of parameter passing scenarios including constants, bindings, event sender and event argument values.
 
@@ -14,24 +13,20 @@ Features:
 - Methods are matched by argument types if more than one method with the same name exists.
 - Method arguments passed as XAML strings are converted to the required method parameter types, so you don't have to use extensions / static resources or bloat the XAML by defining the method binding in element syntax instead of attribute syntax just to pass in an `int` or `double`.
 
-### About Singulink
-
-We are a small team of engineers and designers dedicated to building beautiful, functional and well-engineered software solutions. We offer very competitive rates as well as fixed-price contracts and welcome inquiries to discuss any custom development / project support needs you may have.
-
-This package is part of our **Singulink Libraries** collection. Visit https://github.com/Singulink to see our full list of publicly available libraries and other open-source projects.
+Ported to Avalonia from [Singulink.WPF.Data.MethodBinding](https://github.com/Singulink/Singulink.WPF.Data.MethodBinding)
 
 ## Installation
 
-The package is available on NuGet - simply install the `Singulink.WPF.Data.MethodBinding` package.
+The package is available on NuGet - simply install the `MethodBinding.Avalonia` package.
 
-**Supported Runtimes**: .NET Core 3.0+ and .NET 5+.
+**Supported Runtimes**: .NET Core 3.1+ and .NET 5+.
 
 ## Usage
 
 To import the namespace for Singulink WPF components into your XAML file, add an `xmlns` definition to the root element of your XAML file as follows:
 
 ```xml
-<Window xmlns:s="http://schemas.singulink.com/xaml"/>
+<Window xmlns:s="https://github.com/mysteryx93/MethodBinding.Avalonia"/>
 ```
 
 The simplest form of a method binding just passes in the method name:
