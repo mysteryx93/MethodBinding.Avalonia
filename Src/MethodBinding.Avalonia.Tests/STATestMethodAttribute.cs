@@ -1,25 +1,26 @@
 ﻿using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace MethodBinding.Avalonia.Tests;
-
-public class STATestMethodAttribute : TestMethodAttribute
+namespace MethodBinding.Avalonia.Tests
 {
-    public override TestResult[] Execute(ITestMethod testMethod)
+    public class STATestMethodAttribute : TestMethodAttribute
     {
-        if (Thread.CurrentThread.GetApartmentState() == ApartmentState.STA)
-            return Invoke(testMethod);
+        public override TestResult[] Execute(ITestMethod testMethod)
+        {
+            if (Thread.CurrentThread.GetApartmentState() == ApartmentState.STA)
+                return Invoke(testMethod);
 
-        TestResult[] result = null;
-        var thread = new Thread(() => result = Invoke(testMethod));
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Start();
-        thread.Join();
-        return result!;
-    }
+            TestResult[] result = null;
+            var thread = new Thread(() => result = Invoke(testMethod));
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            thread.Join();
+            return result!;
+        }
 
-    private static TestResult[] Invoke(ITestMethod testMethod)
-    {
-        return new[] { testMethod.Invoke(null) };
+        private static TestResult[] Invoke(ITestMethod testMethod)
+        {
+            return new[] { testMethod.Invoke(null) };
+        }
     }
 }

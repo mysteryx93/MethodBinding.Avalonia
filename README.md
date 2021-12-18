@@ -5,6 +5,8 @@
 
 **MethodBinding** provides the ability to bind events directly to methods. It supports a full range of parameter passing scenarios including constants, bindings, event sender and event argument values.
 
+**DOESN'T YET WORK**
+
 Features:
 - No restrictions on the method signature.
 - Event sender or the event args can be passed as an argument.

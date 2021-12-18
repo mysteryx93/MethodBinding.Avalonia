@@ -3,57 +3,58 @@
 #pragma warning disable RCS1163 // Unused parameter.
 #pragma warning disable CA1801 // Review unused parameters
 
-namespace MethodBinding.Avalonia.Tests;
-
-public class ViewModel
+namespace MethodBinding.Avalonia.Tests
 {
-    public bool Executed { get; private set; }
-    public Type? ParamType { get; private set; }
-
-    public void NoParameters()
+    public class ViewModel
     {
-        Executed = true;
-    }
+        public bool Executed { get; private set; }
+        public Type? ParamType { get; private set; }
 
-    public void StringParam(string x)
-    {
-        Executed = true;
-        ParamType = typeof(string);
-    }
+        public void NoParameters()
+        {
+            Executed = true;
+        }
 
-    public void IntParam(int x)
-    {
-        Executed = true;
-        ParamType = typeof(int);
-    }
+        public void StringParam(string x)
+        {
+            Executed = true;
+            ParamType = typeof(string);
+        }
 
-    public void NullableIntParam(int? x)
-    {
-        Executed = true;
-        ParamType = typeof(int?);
-    }
+        public void IntParam(int x)
+        {
+            Executed = true;
+            ParamType = typeof(int);
+        }
 
-    public void OverloadedIntString(string? x)
-    {
-        Executed = true;
-        ParamType = typeof(string);
-    }
+        public void NullableIntParam(int? x)
+        {
+            Executed = true;
+            ParamType = typeof(int?);
+        }
 
-    public void OverloadedIntString(int y)
-    {
-        Executed = true;
-        ParamType = typeof(int);
-    }
+        public void OverloadedIntString(string? x)
+        {
+            Executed = true;
+            ParamType = typeof(string);
+        }
 
-    public void OverloadedNullableIntDouble(int? x)
-    {
-        Executed = true;
-        ParamType = typeof(int?);
-    }
+        public void OverloadedIntString(int y)
+        {
+            Executed = true;
+            ParamType = typeof(int);
+        }
 
-    public void OverloadedNullableIntDouble(double y)
-    {
-        Executed = true;
-        ParamType = typeof(double);
+        public void OverloadedNullableIntDouble(int? x)
+        {
+            Executed = true;
+            ParamType = typeof(int?);
+        }
+
+        public void OverloadedNullableIntDouble(double y)
+        {
+            Executed = true;
+            ParamType = typeof(double);
+        }
     }
 }

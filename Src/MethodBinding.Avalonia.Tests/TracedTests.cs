@@ -1,44 +1,45 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace MethodBinding.Avalonia.Tests;
-
-public class TracedTests : TraceListener
+namespace MethodBinding.Avalonia.Tests
 {
-    private readonly List<string> _traceMessages = new();
-    private bool _lastLineFinished = true;
-
-    public IReadOnlyList<string> TraceMessages => _traceMessages;
-
-    public TracedTests()
+    public class TracedTests : TraceListener
     {
-        Trace.Listeners.Add(this);
-    }
+        private readonly List<string> _traceMessages = new();
+        private bool _lastLineFinished = true;
 
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-            Trace.Listeners.Remove(this);
+        public IReadOnlyList<string> TraceMessages => _traceMessages;
 
-        base.Dispose(disposing);
-    }
-
-    public override void Write(string? message) => Write(message, false);
-
-    public override void WriteLine(string? message) => Write(message, true);
-
-    private void Write(string? message, bool finishLine)
-    {
-        if (message == null)
-            return;
-
-        if (_lastLineFinished) {
-            _traceMessages.Add(message);
-        }
-        else {
-            _traceMessages[^1] += message;
+        public TracedTests()
+        {
+            Trace.Listeners.Add(this);
         }
 
-        _lastLineFinished = finishLine;
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+                Trace.Listeners.Remove(this);
+
+            base.Dispose(disposing);
+        }
+
+        public override void Write(string? message) => Write(message, false);
+
+        public override void WriteLine(string? message) => Write(message, true);
+
+        private void Write(string? message, bool finishLine)
+        {
+            if (message == null)
+                return;
+
+            if (_lastLineFinished) {
+                _traceMessages.Add(message);
+            }
+            else {
+                _traceMessages[^1] += message;
+            }
+
+            _lastLineFinished = finishLine;
+        }
     }
 }
