@@ -1,7 +1,6 @@
 # MethodBinding.Avalonia
 
-[![View nuget packages](https://img.shields.io/nuget/v/Singulink.WPF.Data.MethodBinding.svg)](https://www.nuget.org/packages/Singulink.WPF.Data.MethodBinding/)
-[![Build and Test](https://github.com/mysteryx93/MethodBinding.Avalonia/workflows/build%20and%20test/badge.svg)](https://github.com/mysteryx93/MethodBinding.Avalonia/actions?query=workflow%3A%22build+and+test%22)
+[![View nuget packages](https://img.shields.io/nuget/v/MethodBinding.Avalonia.svg)](https://www.nuget.org/packages/MethodBinding.Avalonia/)
 
 **MethodBinding** provides the ability to bind events directly to methods. It supports a full range of parameter passing scenarios including constants, bindings, event sender and event argument values.
 
