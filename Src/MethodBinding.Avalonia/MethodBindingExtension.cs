@@ -83,10 +83,15 @@ namespace MethodBinding.Avalonia
 
             Type? eventHandlerType = null;
 
-            if (provideValueTarget.TargetProperty is EventInfo eventInfo) {
+            string? targetName = provideValueTarget.TargetProperty as string;
+            var eventInfo = provideValueTarget.TargetProperty as EventInfo ??
+                            (targetName != null ? provideValueTarget.TargetObject.GetType().GetEvent(targetName) : null);
+            var methodInfo = eventInfo != null ? null : provideValueTarget.TargetProperty as MethodInfo ??
+                            (targetName != null ? provideValueTarget.TargetObject.GetType().GetMethod(targetName) : null);
+            if (eventInfo != null) {
                 eventHandlerType = eventInfo.EventHandlerType;
             }
-            else if (provideValueTarget.TargetProperty is MethodInfo methodInfo) {
+            else if (methodInfo != null) {
                 var parameters = methodInfo.GetParameters();
 
                 if (parameters.Length == 2)

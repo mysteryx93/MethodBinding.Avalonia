@@ -1,4 +1,6 @@
-﻿namespace MethodBinding.Avalonia.Sample.ViewModels;
+﻿using ReactiveUI;
+
+namespace MethodBinding.Avalonia.Sample.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
@@ -7,5 +9,6 @@ public class MainWindowViewModel : ViewModelBase
     public void TextBlock_Pressed()
     {
         Greeting = "Pressed!";
+        this.RaisePropertyChanged(nameof(Greeting));
     }
 }
