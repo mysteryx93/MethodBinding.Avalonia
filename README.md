@@ -14,6 +14,13 @@ Features:
 
 Ported to Avalonia from [Singulink.WPF.Data.MethodBinding](https://github.com/Singulink/Singulink.WPF.Data.MethodBinding)
 
+## Known Issues
+
+- References break when using nested binding
+- JetBrains Rider/Reshaper gives a false XAML error that "binding must be a property"
+
+**It is not production-ready because of these problems.**
+
 ## Installation
 
 The package is available on NuGet - simply install the `MethodBinding.Avalonia` package.

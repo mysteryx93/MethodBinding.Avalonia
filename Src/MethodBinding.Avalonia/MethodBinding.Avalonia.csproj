@@ -27,7 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.10" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
+    <PackageReference Include="Avalonia" Version="0.10.12" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
+    <PackageReference Remove="Microsoft.CodeAnalysis.FxCopAnalyzers" />
+    <PackageReference Update="RuntimeNullables.Fody" Version="1.0.2" />
+    <PackageReference Remove="Roslynator.Analyzers" />
+    <PackageReference Remove="StyleCop.Analyzers" />
+    <PackageReference Remove="DotNetAnalyzers.DocumentationAnalyzers" />
+    <PackageReference Remove="TunnelVisionLabs.ReferenceAssemblyAnnotator" />
   </ItemGroup>
 </Project>
